@@ -4,22 +4,30 @@
 Обновление ядра системы
 # Цель
 научиться обновлять ядро в ОС Linux;
-# среда выполнения
+# Среда выполнения
 VM VirtualBox 7.0.10, OS Ubuntu 24.04.03
-# протокол выполнения
+# Протокол выполнения
 -- 1. Смотрим текущую версию ядра - 6.8.0
 usr1@srv1:~$ uname -r
 6.8.0-134-generic
+
 usr1@srv1:~$
 
+
 -- 2. Создаем в home папку kernel и переходим в нее
+
 usr1@srv1:~$ mkdir kernel && cd kernel
+
 usr1@srv1:~$
 
 -- 3. Смотрим архитектуру системы, нам надо amd64
+
 usr1@srv1:~/kernel$ uname -p
+
 x86_64
+
 usr1@srv1:~$
+
 
 
 -- 4. Пробуем установку 7.1.3 с сайта https://kernel.ubuntu.com/mainline/v7.1.3/, по моему последняя
@@ -84,7 +92,7 @@ linux-modules-7.1.3- 100%[====================>] 162.28M  10.6MB/s    in 16s
 usr1@srv1:~/kernel$
 
 -- 5. Устанавливаем все пакеты в папке
-
+//
 usr1@srv1:~/kernel$ sudo dpkg -i *.deb
 [sudo] password for usr1:
 Selecting previously unselected package linux-headers-7.1.3-070103.
@@ -122,7 +130,8 @@ Check GRUB_DISABLE_OS_PROBER documentation entry.
 Adding boot menu entry for UEFI Firmware Settings ...
 done
 usr1@srv1:~/kernel$
-
+"
+//
 -- 6. Проверяем наличие загрузочной записи нового ядра
 
 usr1@srv1:~/kernel$ ls -al /boot
